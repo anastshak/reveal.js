@@ -1,40 +1,197 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-		<title>reveal.js</title>
+    <title>MongoDB</title>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" />
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section><h1>MongoDB</h1></section>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+        <section>
+          <h3>What is it</h3>
+          <p>
+            MongoDB &#8211; the most popular NoSQL database (the term 'NoSQL'
+            means 'non-relational'). Also it is an open-source document-oriented
+            database.
+          </p>
+        </section>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+        <section>
+          <h3>Concept</h3>
+          <p>MongoDB works on concept of database, collection and document.</p>
+          <ul>
+            <li>Database is a physical container for collections.</li>
+            <li>Collection is a group of MongoDB documents.</li>
+            <li>A document is a set of key-value pairs.</li>
+          </ul>
+        </section>
+
+        <section>
+          <section>
+            <h3>RDBMS vs MongoDB</h3>
+            <ul>
+              <li>
+                RDBMS has a typical schema design, unlike MongoDB is
+                document-oriented.
+              </li>
+              <li>Complex transactions are not supported in MongoDB.</li>
+              <li>
+                MongoDB allows a highly flexible and scalable document
+                structure.
+              </li>
+              <li>MongoDB is faster.</li>
+            </ul>
+          </section>
+
+          <section>
+            <p>Relational Database Management System(RDBMS) / MongoDB</p>
+            <img
+              class="r-frame"
+              style="background: rgba(255, 255, 255, 0.1)"
+              data-src="https://miro.medium.com/v2/resize:fit:750/format:webp/1*x2pNaho-hL0EbwPrEFz7RQ.png"
+              alt="Up arrow"
+            />
+            <p>
+              <a
+                href="https://www.tutorialspoint.com/mongodb/mongodb_overview.htm"
+                style="font-size: small"
+                >link to the source</a
+              >
+            </p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Stored data</h3>
+            <p>
+              MongoDB isn't based on the table-like relational database
+              structure, so it's stores data in flexible, JSON-like documents
+              (this format of storage is called BSON), meaning fields can vary
+              from document to document and data structure can be changed over
+              time.
+            </p>
+          </section>
+
+          <section>
+            <p>A simple MongoDB document structure:</p>
+            <pre><code>
+							{
+								'title': 'Presentation',
+								'by': 'Anastasia Shakura',
+								'url': 'https://...',
+								'type': 'MongoDB-NoSQL'
+							} 
+						</code></pre>
+          </section>
+
+          <section>
+            <p>Below is a sample document in MongoDB:</p>
+            <pre><code>
+					{
+						"_id" : ObjectId("52832eb59f36fe144eeea8dc"),
+						"baseprice" : 8.99,
+						"category" : "toys",
+						"colors" : [ "red", "green", "cosmic purple"],
+						"name" : "Cosmic Yo-yo",
+						"promotions" : [ 
+							{ "coupon" : "XY678", "saleprice" : 7.99 },
+							{ "coupon" : "AB8888", "saleprice" : 7.49 }
+						]
+					}								
+						</code></pre>
+          </section>
+
+          <section>
+            <p>About ID:</p>
+            <p>ObjectId is a 12-byte BSON type, constructed using:</p>
+            <ul>
+              <li>
+                a 4-byte value representing the seconds since the Unix epoch,
+              </li>
+              <li>a 3-byte machine identifier,</li>
+              <li>a 2-byte process id, and</li>
+              <li>a 3-byte counter, starting with a random value.</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h3>Work: Installation</h3>
+          <ol>
+            <li>
+              Go to
+              <a href="https://www.mongodb.com/try/download/community"
+                >this site</a
+              >
+              and download MongoDB for your OS version
+            </li>
+            <li>
+              There are two executables:
+              <ul>
+                <li>mongod</li>
+                <li>mongo</li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+        <section>
+          <h3>Work: methods</h3>
+          <ol>
+            <li>show databases</li>
+            <li>use db_name</li>
+            <li>db.createCollection('db_name')</li>
+            <li>db.collection.[insertOne()/insertOne()/insert]</li>
+            <li>db.Movies.find()[.pretty()]</li>
+            <li>db.collection.update()</li>
+            <li>db.collection.remove()</li>
+            <li>db.collection.drop()</li>
+            <li>db.collection.dropDatabase()</li>
+          </ol>
+        </section>
+
+        <section>
+          <h3>Features of MongoDB</h3>
+          <ul>
+            <li>Speed</li>
+            <li>Rich Dynamic Queries</li>
+            <li>Lazy Creation</li>
+            <li>Schema-less</li>
+            <li>Returns JSON</li>
+            <li>Easy Replication and Failover</li>
+            <li>Auto-Sharding</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
 </html>
